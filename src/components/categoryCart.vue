@@ -2,7 +2,7 @@
   <v-container>
 
     <v-card class="mx-auto cart"  max-width="400">
-      <v-img  height="250px" src="../assets/img/mobile.png">
+      <v-img  height="250px" :src=getulr(this.category.imageUrl)>
       </v-img>
 
       <v-card-subtitle class="pb-0">
@@ -42,6 +42,10 @@ export default {
     description: ''
   }),
   methods: {
+    getulr(pathe){
+      console.log(pathe)
+      return require(`../assets/img/${pathe}`)
+    }
   },
    props:['category']
 }

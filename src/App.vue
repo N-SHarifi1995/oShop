@@ -1,10 +1,33 @@
 <template>
   <div id="app">
-    <router-view></router-view>
-   
+    <router-view :categoris="categories" ></router-view>
+
   </div>
 </template>
+<script>
+import { mapState, mapActions } from 'vuex'
+export default {
+  data() {
+    return {
+      productes: []
+    }
+  },
+  methods: {
 
+    ...mapActions(["GetCategoury"])
+  },
+  computed: {
+    ...mapState(['categories']),
+    
+  },
+  mounted() {
+    
+    this.GetCategoury();
+   
+    
+  }
+}
+</script>
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

@@ -2,7 +2,7 @@
   <v-container color="white">
 <h3 class="header">OUR CATEGORY</h3>
     <v-row>
-      <v-col cols="4" v-for="cat in categories" :key="cat.id">
+      <v-col cols="4" v-for="cat in categoris" :key="cat.id">
         <categoury-cart :category="cat"></categoury-cart>
       </v-col>
     </v-row>
@@ -15,7 +15,7 @@
 // import Swal from 'sweetalert2'
 // import api from '../../services/API'
 import CategouryCart from '../categoryCart.vue' 
-import {mapState, mapActions} from 'vuex'
+//import {mapState, mapActions} from 'vuex'
 export default {
   name: 'CategoryVeiw',
 
@@ -23,41 +23,7 @@ export default {
     
   })
   , components: { CategouryCart },
-  methods: {
-    // async GetCategoury() {
-
-    //   try {
-    //     let res = await api().get('/category/');
-    //     let result = res.data;
-
-    //     if (res.status == 200) {
-
-    //       result = result.filter(j => typeof j.categoryName == 'string')
-    //       let resultt = result.filter(i => i.categoryName.includes('La'))
-    //       this.categories = resultt
-
-    //     }
-    //   } catch (error) {
-
-    //     new Swal({
-    //       text: "There are some problems`",
-    //       icon: 'error'
-
-    //     })
-    //   }
-
-
-    // },
- ...mapActions(["GetCategoury"])
-  },
-computed:{
-  ...mapState(['categories'])
-},
-  mounted() {
-    //this.$store.dispatch('GetCategoury')
-    
-    this.GetCategoury()
-  }
+ props:['categoris']
 }
 </script>
 <style scoped lang="scss">
