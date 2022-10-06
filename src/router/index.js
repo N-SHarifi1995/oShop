@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import AddCategoury from '../components/categoury/addCategoury'
 import Categouries from '../components/categoury/categoryview'
+import Products from '../components/products/productView'
 import adminPage from '../components/adminpage'
 
 Vue.use(VueRouter)
@@ -28,6 +29,11 @@ const routes = [
     path: '/admin',
     name: 'Admin',
     component:adminPage,
+    
+  },{
+    path: '/admin/products',
+    name: 'product',
+    component:Products,
     
   }
 ]

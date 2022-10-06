@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view :categoris="categories" ></router-view>
+    <router-view :categoris="categories" :products='products'></router-view>
 
   </div>
 </template>
@@ -9,22 +9,23 @@ import { mapState, mapActions } from 'vuex'
 export default {
   data() {
     return {
-      productes: []
+      
     }
   },
   methods: {
 
-    ...mapActions(["GetCategoury"])
+    ...mapActions(["GetCategoury", "GetProduct"])
   },
   computed: {
-    ...mapState(['categories']),
-    
+    ...mapState(['categories','products']),
+
   },
   mounted() {
-    
+
     this.GetCategoury();
-   
-    
+    this.GetProduct();
+
+
   }
 }
 </script>

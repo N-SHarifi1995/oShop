@@ -2,14 +2,14 @@
   <v-container class="buttons">
 
 
-    <v-btn :to="{name:'Categoris'}" class="mx-2" fab width="100" height="100" outlined color="indigo">
-      categouris
+    <v-btn :to="{name:'Categoris'}" class="mt-3 button" fab width="150" height="150" >
+     دسنه بندی ها
     </v-btn>
 
-    <v-btn class="mx-2" fab width="100" height="100" outlined color="indigo">
-      products
+    <v-btn :to="{name:'product'}" class="mt-3  button"  fab width="150" height="150"  >
+     محصولات
     </v-btn>
-    <v-btn class="mx-2" fab width="100" height="100" outlined color="indigo">
+    <v-btn class="mt-3  button" fab width="150" height="150"  >
       کاربران
     </v-btn>
 
@@ -44,7 +44,15 @@ export default {
    flex-direction: column;
    height: 100vh;
    justify-content: space-evenly;
-   font-family: $font-vazir
+   
+   .button{
+   background-color: $secondary-color;
+   color: white;
+   font-weight:bolder;
+   font-family: $font-vazir;
+   font-size:1rem;
+   box-shadow: 2px 8px 15px rgb(68, 65, 65);
+   }
  }
 
  .cart {
@@ -56,14 +64,6 @@ export default {
  }
 
 
- // @font-face {
- //   font-family: 'vazir';
- //    src: url('../vazir-font-v18.0.0/Vazir-Bold.eot') ;
- //   //   url('../src/assets/vazir-font-v18.0.0/Vazir.ttf'),
- //   //   url('../src/assets/vazir-font-v18.0.0/Vazir.woff') ,
- //   //   url('../src/assets/vazir-font-v18.0.0/Vazir.woff2');
-
- //   font-weight: normal;
- // }
+ 
 </style>
   

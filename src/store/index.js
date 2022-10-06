@@ -7,7 +7,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    categories: []
+    categories: [],
+    products: []
   },
   getters: {
   },
@@ -15,8 +16,12 @@ export default new Vuex.Store({
     get_category(state, cat) {
       state.categories = cat
 
+    },
+    get_product(state, pro) {
+      state.products = pro
+
     }
-  },  
+  },
 
 
 
@@ -33,7 +38,7 @@ export default new Vuex.Store({
           result = result.filter(j => typeof j.categoryName == 'string')
           let resultt = result.filter(i => i.categoryName.includes('* '))
           let categories = resultt
-      
+
           commit('get_category', categories)
 
         }
@@ -44,25 +49,51 @@ export default new Vuex.Store({
         //   icon: 'error'
 
         // })
-      }},
-    async AddCategory({ commit },newCategory) {
+      }
+    },
+    async AddCategory({ commit }, newCategory) {
 
       try {
-        let result = await api().post('/category/create',newCategory);
-        
+        let result = await api().post('/category/create', newCategory);
+
         console.log(result)
-        if (result.status==201||result.status==201) {
+        if (result.status == 201 || result.status == 201) {
           alert('vuex.okie')
-         commit('get_category','')
+          commit('get_category', '')
           return result
-         
+
         }
-      } catch (error){
+      } catch (error) {
         return error
       }
 
 
-    }
+    },
+    async GetProduct({ commit }) {
+
+      try {
+        let res = await api().get('/product/');
+        let result = res.data;
+
+        if (res.status == 200) {
+          alert('5655')
+          result = result.filter(j => typeof j.name == 'string')
+          let resultt = result.filter(i => i.name.includes('a'))
+          let products = resultt
+          
+          console.log(products)
+          commit('get_product', products)
+
+        }
+      } catch (error) {
+        alert('dd')
+        // new Swal({
+        //   text: "There are some problems`",
+        //   icon: 'error'
+
+        // })
+      }
+    },
   },
   modules: {
   }

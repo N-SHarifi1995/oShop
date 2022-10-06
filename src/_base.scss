@@ -1,11 +1,12 @@
 $bgColor: #efe4e4;
-$secondary-color: #4A148C;
+$secondary-color: #9329bc;
 $font-vazir: 'vazir';
 
 #app {
   background-color: $bgColor;
+ 
 }
-
+*{ font-family:$font-vazir;}
 @mixin displayflex {
   display: flex;
   align-items: center;
