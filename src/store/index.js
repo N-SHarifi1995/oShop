@@ -36,7 +36,7 @@ export default new Vuex.Store({
         if (res.status == 200) {
 
           result = result.filter(j => typeof j.categoryName == 'string')
-          let resultt = result.filter(i => i.categoryName.includes('* '))
+          let resultt = result.filter(i => i.categoryName.includes('a'))
           let categories = resultt
 
           commit('get_category', categories)
@@ -76,12 +76,11 @@ export default new Vuex.Store({
         let result = res.data;
 
         if (res.status == 200) {
-          alert('5655')
+        
           result = result.filter(j => typeof j.name == 'string')
           let resultt = result.filter(i => i.name.includes('a'))
           let products = resultt
           
-          console.log(products)
           commit('get_product', products)
 
         }

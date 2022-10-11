@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import AddCategoury from '../components/categoury/addCategoury'
 import Categouries from '../components/categoury/categoryview'
 import Products from '../components/products/productView'
+import addProduct from '../components/products/addProduct'
 import adminPage from '../components/adminpage'
 
 Vue.use(VueRouter)
@@ -32,8 +33,14 @@ const routes = [
     
   },{
     path: '/admin/products',
-    name: 'product',
+    name: 'products',
     component:Products,
+    
+  },
+  {
+    path: '/admin/addProduct',
+    name: 'addProducts',
+    component:addProduct,
     
   }
 ]

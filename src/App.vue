@@ -1,8 +1,8 @@
 <template>
-  <div id="app">
+  <v-app id="app">
     <router-view :categoris="categories" :products='products'></router-view>
 
-  </div>
+  </v-app>
 </template>
 <script>
 import { mapState, mapActions } from 'vuex'
