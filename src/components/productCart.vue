@@ -20,8 +20,8 @@
           Share
         </v-btn>
 
-        <v-btn color="orange" text>
-          Explore
+        <v-btn color="orange" text :to="{ name: 'editProduct', params: { id: product.id } }">
+          ویرایش
         </v-btn>
       </v-card-actions>
     </v-card>

@@ -1,6 +1,6 @@
 <template>
   <v-app id="app">
-    <router-view :categoris="categories" :products='products'></router-view>
+    <router-view :categoris="categories" :products='products' @editCategory="GetCategoury"></router-view>
 
   </v-app>
 </template>

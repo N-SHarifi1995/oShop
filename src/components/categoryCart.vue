@@ -2,8 +2,8 @@
   <v-container>
 
     <v-card class="mx-auto cart"  max-width="400">
-      <v-img  height="250px" :src=getulr(this.category.imageUrl)>
-      </v-img>
+      <!-- <v-img  height="250px" :src=getulr(this.category.imageUrl)>
+      </v-img> -->
 
       <v-card-subtitle class="pb-0">
         Number {{this.category.id}}
@@ -16,8 +16,8 @@
       </v-card-text>
 
       <v-card-actions>
-        <v-btn color="orange" text>
-          Share
+        <v-btn color="orange" text :to="{ name: 'editCategory', params: { id: category.id } }">
+         edit
         </v-btn>
 
         <v-btn color="orange" text>
