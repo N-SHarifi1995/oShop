@@ -1,7 +1,7 @@
 <template>
     <v-container color="white">
   <h3 class="header">محصولات</h3>
-      <v-row>
+      <v-row no-gutters>
         <v-col cols="4" v-for="pro in products" :key="pro.id">
           <Product-cart :product="pro"></Product-cart>
         </v-col>

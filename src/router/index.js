@@ -4,7 +4,9 @@ import HomeView from '../views/HomeView.vue'
 import AddCategoury from '../components/categoury/addCategoury'
 import editCategory from '../components/categoury/editCategory'
 import Categouries from '../components/categoury/categoryview'
+import productsCategories from '../components/categoury/productsCategories'
 import Products from '../components/products/productView'
+import ProductDetails from '../components/products/productDetails'
 import addProduct from '../components/products/addProduct'
 import editProduct from '../components/products/editProduct'
 import adminPage from '../components/adminpage'
@@ -32,7 +34,7 @@ const routes = [
   },
   {
     path: '/admin/Categouries',
-    name: 'Categoris',
+    name: 'adminCategoris',
     component: Categouries,
 
   }, {
@@ -41,8 +43,20 @@ const routes = [
     component: adminPage,
 
   }, {
+    path: '/product/:id',
+    name: 'productDetails',
+    params:true,
+    component: ProductDetails,
+
+  },{
+    path: '/products/:id',
+    name: 'productsCategories',
+    params:true,
+    component: productsCategories,
+
+  }, {
     path: '/admin/products',
-    name: 'products',
+    name: 'adminproducts',
     component: Products,
 
   },

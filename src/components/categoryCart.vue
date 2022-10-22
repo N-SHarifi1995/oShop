@@ -1,7 +1,7 @@
 <template>
   <v-container>
 
-    <v-card class="mx-auto cart"  max-width="400">
+    <v-card class="mx-auto cart" max-width="400">
       <!-- <v-img  height="250px" :src=getulr(this.category.imageUrl)>
       </v-img> -->
 
@@ -16,12 +16,12 @@
       </v-card-text>
 
       <v-card-actions>
-        <v-btn color="orange" text :to="{ name: 'editCategory', params: { id: category.id } }">
-         edit
+        <v-btn text :to="{ name: 'editCategory', params: { id: category.id } }" v-show="$route.name=='adminCategoris'">
+          edit
         </v-btn>
 
-        <v-btn color="orange" text>
-          Explore
+        <v-btn color="orange" text :to="{ name: 'productsCategories', params: { id: category.id } }">
+          محصولات
         </v-btn>
       </v-card-actions>
     </v-card>
@@ -42,21 +42,25 @@ export default {
     description: ''
   }),
   methods: {
-    getulr(pathe){
+    getulr(pathe) {
       console.log(pathe)
       return require(`../assets/img/${pathe}`)
     }
   },
-   props:['category']
+  props: ['category']
 }
 </script>
 <style scoped lang="scss">
 .form {
   @include displayflex;
 
-}.cart{
-  
-  img{@extend %fullsize;}
+}
+
+.cart {
+
+  img {
+    @extend %fullsize;
+  }
 }
 </style>
   

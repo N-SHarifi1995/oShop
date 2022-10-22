@@ -49,7 +49,7 @@ export default {
    background-color: $secondary-color;
    color: white;
    font-weight:bolder;
-   font-family: $font-vazir;
+ 
    font-size:1rem;
    box-shadow: 2px 8px 15px rgb(68, 65, 65);
    }

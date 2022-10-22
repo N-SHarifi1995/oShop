@@ -1,12 +1,21 @@
-$bgColor: #efe4e4;
-$secondary-color: #9329bc;
-$font-vazir: 'vazir';
+$bgColor: rgba(203, 202, 202, 0.475);
+$secondary-color: #04052c;
+$Yass-Queen: #ff1d58;
+$Sister-Sister: #f75990;
+$Crown-Yellow: #fff685;
+$Blue-Light: #00DDFF;
+$Brutal-Blue: #0049B7;
+$font-mj: 'mj';
 
 #app {
   background-color: $bgColor;
- 
+
 }
-*{ font-family:$font-vazir;}
+
+* {
+  font-family: $font-mj;
+}
+
 @mixin displayflex {
   display: flex;
   align-items: center;
@@ -19,20 +28,37 @@ $font-vazir: 'vazir';
   width: 100%;
 
 }
+.btn{
+  background-color:$Yass-Queen ;
+}
+
 @font-face {
   font-family: 'dancing';
-   src: url(D:\vue\tamreen\shop\src\static\DancingScript-Regular.ttf) ;
+  src: url(D:\vue\tamreen\shop\src\static\DancingScript-Regular.ttf);
   //   url('../src/assets/vazir-font-v18.0.0/Vazir.ttf'),
   //   url('../src/assets/vazir-font-v18.0.0/Vazir.woff') ,
   //   url('../src/assets/vazir-font-v18.0.0/Vazir.woff2');
 
- 
-}@font-face {
-  font-family:'vazir';
-   src: url(D:\vue\tamreen\shop\src\mj.ttf) ;
-  //   url('../src/assets/vazir-font-v18.0.0/Vazir.ttf'),
-  //   url('../src/assets/vazir-font-v18.0.0/Vazir.woff') ,
-  //   url('../src/assets/vazir-font-v18.0.0/Vazir.woff2');
 
- 
+}
+
+@font-face {
+  font-family: 'mj';
+  src: url(D:\vue\tamreen\shop\src\mj.ttf),
+  //   url(D:\vue\tamreen\shop\src\mj.eot),
+  //   url(D:\vue\tamreen\shop\src\mj.ttf) ,
+  // url(D:\vue\tamreen\shop\src\mj.ttf);
+
+
+}
+@font-face {
+  font-family: 'vazir';
+  src: url(D:\vue\tamreen\shop\src\vazir-font-v18.0.0\Vazir-Light.eot),
+    url(D:\vue\tamreen\shop\src\vazir-font-v18.0.0\Vazir-Light.ttf),
+    url(D:\vue\tamreen\shop\src\vazir-font-v18.0.0\Vazir-Light.woff),
+    url(D:\vue\tamreen\shop\src\vazir-font-v18.0.0\Vazir-Light.woff2),
+  //   url(D:\vue\tamreen\shop\src\mj.ttf) ,
+  // url(D:\vue\tamreen\shop\src\mj.ttf);
+
+
 }

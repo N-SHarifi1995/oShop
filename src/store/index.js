@@ -36,9 +36,8 @@ export default new Vuex.Store({
         if (res.status == 200) {
 
           result = result.filter(j => typeof j.categoryName == 'string')
-          let resultt = result.filter(i => i.categoryName.includes('a'))
-          let categories = resultt
-
+          // let resultt = result.filter(i => i.categoryName.includes(''))
+          let categories = result
           commit('get_category', categories)
 
         }

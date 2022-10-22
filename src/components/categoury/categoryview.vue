@@ -1,10 +1,10 @@
 <template>
   <v-container color="white">
 <h3 class="header">OUR CATEGORY</h3>
-    <v-row>
+    <v-row no-gutters>
       <v-col cols="4" v-for="cat in categoris" :key="cat.id">
         <categoury-cart :category="cat"></categoury-cart>
-      </v-col>
+      </v-col >
     </v-row>
 
   </v-container>

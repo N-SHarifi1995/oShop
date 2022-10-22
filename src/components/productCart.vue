@@ -16,11 +16,11 @@
       </v-card-text>
 
       <v-card-actions>
-        <v-btn color="orange" text>
-          Share
+        <v-btn color="orange" text :to="{ name: 'productDetails', params: { id: product.id } }">
+          نمایش
         </v-btn>
 
-        <v-btn color="orange" text :to="{ name: 'editProduct', params: { id: product.id } }">
+        <v-btn color="orange" text v-show="$route.name=='adminproducts'" :to="{ name: 'editProduct', params: { id: product.id } }">
           ویرایش
         </v-btn>
       </v-card-actions>

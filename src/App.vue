@@ -1,29 +1,37 @@
 <template>
-  <v-app id="app">
-    <router-view :categoris="categories" :products='products' @editCategory="GetCategoury"></router-view>
 
+  <v-app id="app">
+    <navbar></navbar>
+    <router-view class="view" :categoris="categories" :products='products' @editCategory="GetCategoury"></router-view>
+  <footerPage></footerPage>
   </v-app>
 </template>
 <script>
-import { mapState, mapActions } from 'vuex'
+import {mapState,  mapActions } from 'vuex'
+import navbar from './components/material/navbar.vue'
+import footerPage from './components/material/footer.vue'
 export default {
+
   data() {
     return {
       
     }
   },
+  components: { navbar,footerPage},
   methods: {
 
-    ...mapActions(["GetCategoury", "GetProduct"])
+    ...mapActions(["GetCategoury", "GetProduct"]),
+ 
+  
   },
   computed: {
-    ...mapState(['categories','products']),
-
+      ...mapState(['categories', 'products']),
   },
   mounted() {
 
     this.GetCategoury();
     this.GetProduct();
+   
 
 
   }
@@ -36,6 +44,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+ 
+}
+.view{
+  min-height: 60vh;;
 }
 
 nav {
