@@ -2,7 +2,7 @@
 
   <v-app id="app">
     <navbar></navbar>
-    <router-view class="view" :categoris="categories" :products='products' @editCategory="GetCategoury"></router-view>
+    <router-view class="view " :categoris="categories" :products='products' @editCategory="GetCategoury"></router-view>
   <footerPage></footerPage>
   </v-app>
 </template>
@@ -47,7 +47,7 @@ export default {
  
 }
 .view{
-  min-height: 60vh;;
+  min-height: 60vh;
 }
 
 nav {

@@ -8,10 +8,11 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     categories: [],
-    products: []
+    products: [],
+    newUser: '',
+    token:''
   },
-  getters: {
-  },
+ 
   mutations: {
     get_category(state, cat) {
       state.categories = cat
@@ -20,6 +21,12 @@ export default new Vuex.Store({
     get_product(state, pro) {
       state.products = pro
 
+    },
+    sign_up(state, user) {
+      state.newUser = user
+    },
+    sign_in(state,tkn) {
+      state.token= tkn
     }
   },
 
@@ -75,11 +82,11 @@ export default new Vuex.Store({
         let result = res.data;
 
         if (res.status == 200) {
-        
+
           result = result.filter(j => typeof j.name == 'string')
           let resultt = result.filter(i => i.name.includes('a'))
           let products = resultt
-          
+
           commit('get_product', products)
 
         }
@@ -90,6 +97,42 @@ export default new Vuex.Store({
         //   icon: 'error'
 
         // })
+      }
+    },
+    async SignUp({ commit }, user) {
+
+      try {
+        let res = await api().post('/user/signup', user);
+
+        console.log(res)
+        if (res.status == 200 || res.status == 201) {
+
+          commit('sign_up', user)
+          return res
+
+        }
+      } catch (error) {
+        alert('dd')
+        
+      }
+    },
+    async SignIn({ commit }, user) {
+ 
+      try {
+        let res = await api().post('/user/signIn', user);
+
+        console.log(res)
+        if (res.status == 200 || res.status == 201) {
+          let token=res.data.token;
+          window.localStorage.token=JSON.stringify(token),
+         commit('sign_in',token)
+          //commit('sign_up', user)
+          return res
+
+        }
+      } catch (error) {
+        alert('dd')
+
       }
     },
   },

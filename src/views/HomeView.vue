@@ -28,7 +28,8 @@
         </v-col>
       </v-row>
     </v-card> 
-  </div> 
+  </div>  
+
 
 
 </template>
@@ -48,10 +49,10 @@ export default {
   data() {
     return {
       categorySize:null,
-     productSize:null,
+     productSize:null,  
     }
   },
-  mounted(){
+  mounted(){  
 this.categorySize=Math.min(6,this.categoris.length);
 this.productSize=Math.min(8,this.products.length);
    }

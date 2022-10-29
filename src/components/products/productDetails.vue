@@ -6,45 +6,80 @@
         <v-img :src="product.imageURL"></v-img>
       </v-col>
       <v-col cols="8" class="d-flex align-start flex-column px-5 py-5 justify-space-around">
-       <div class="d-flex title"> <strong> نام محصول:</strong><p class="pl-4"> {{product.name}}</p></div>
-       <div class="d-flex title"><strong> توضیحات:</strong> <p class="pl-4"> {{product.description}}</p></div>
-       <div class="d-flex title"><strong>قیمت: </strong>  <p class="pl-4"> {{product.price}}</p></div>
-       <div class="d-flex title"> <strong>دسته بندی :</strong><p class="pl-4"> {{category.categoryName}}</p></div>
-       
-       
-       
+        <div class="d-flex title"> <strong> نام محصول:</strong>
+          <p class="pl-4"> {{ product.name }}</p>
+        </div>
+        <div class="d-flex title"><strong> توضیحات:</strong>
+          <p class="pl-4"> {{ product.description }}</p>
+        </div>
+        <div class="d-flex title"><strong>قیمت: </strong>
+          <p class="pl-4"> {{ product.price }}</p>
+        </div>
+        <div class="d-flex title"> <strong>دسته بندی :</strong>
+          <p class="pl-4"> {{ category.categoryName }}</p>
+        </div>
+
+        <v-btn fab icon color="#ff1d58" @click="wishlist(product.id)">
+          <v-icon>mdi-heart</v-icon>
+        </v-btn>
+
       </v-col>
     </v-row>
 
   </v-container>
 </template>
   
+
 <script>
 
-
+import Swal from 'sweetalert2';
+import api from '../../services/API'
 export default {
   name: 'productDetails',
 
   data: () => ({
     product: '',
     id: '',
-    category:""
+    category: "",
+    token: ''
+
   }),
   mounted() {
     this.id = this.$route.params.id;
     this.product = this.products.find(pro => pro.id == this.id);
-    this.category=this.categoris.find(cat=>cat.id==this.product.categoryId)
+    this.category = this.categoris.find(cat => cat.id == this.product.categoryId);
+    this.token = this.$store.state.token
+
+
   },
 
-  props: ['products','categoris']
+
+  props: ['products', 'categoris'],
+  methods: {
+   async wishlist(proid) {
+      console.log(this.token)
+      try { 
+        let reswishlist=await api().post(`/wishlist/add?token=${this.token}`,{id:proid})
+        if(reswishlist.status==200||reswishlist.status==201){
+         new Swal({
+          text:'به لیست موزد علاقهها افزوده شد'
+         })
+        }
+      } catch (error) {
+
+         new Swal({
+          text:'خطایی رخ داده است'
+         })
+      }
+
+
+    }
+  }
 }
 </script>
 <style scoped lang="scss">
-
-// .title {
-// font-family:  $font-vazir;
-// font-size: 35px;
-// font-weight: 500;
-// }
+.favorite {
+  color: $Yass-Queen
+}
 </style>
   

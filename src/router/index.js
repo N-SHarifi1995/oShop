@@ -1,11 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import signUp from '../views/signUp'
+import signIn from '../views/signIn'
 import AddCategoury from '../components/categoury/addCategoury'
 import editCategory from '../components/categoury/editCategory'
 import Categouries from '../components/categoury/categoryview'
 import productsCategories from '../components/categoury/productsCategories'
 import Products from '../components/products/productView'
+import wishList from '../components/products/favoritePro'
 import ProductDetails from '../components/products/productDetails'
 import addProduct from '../components/products/addProduct'
 import editProduct from '../components/products/editProduct'
@@ -18,6 +21,15 @@ const routes = [
     path: '/',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/signUp',
+    name: 'signUp',
+    component: signUp
+  }, {
+    path: '/signIn',
+    name: 'signIn',
+    component: signIn,
   },
   {
     path: '/admin/AddCategoury',
@@ -45,13 +57,19 @@ const routes = [
   }, {
     path: '/product/:id',
     name: 'productDetails',
-    params:true,
+    params: true,
     component: ProductDetails,
 
-  },{
+  }, {
+    path: '/wishlist',
+    name: 'wishList',
+    component: wishList,
+
+  },
+  {
     path: '/products/:id',
     name: 'productsCategories',
-    params:true,
+    params: true,
     component: productsCategories,
 
   }, {
@@ -67,7 +85,7 @@ const routes = [
 
   }, {
     path: '/admin/editProduct/:id',
-    name: 'editProduct', 
+    name: 'editProduct',
     params: true,
     component: editProduct,
 
