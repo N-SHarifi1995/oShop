@@ -57,7 +57,7 @@ import Swal  from 'sweetalert2'
          let result = await api().post(`/category/update/${this.id}` ,this.category)
   
        if (result.status==200||result.status==201) {
-      this.$emit('editCategory');
+      this.$emit('fetchData');
       this.$router.push({name:"Categoris"})
          new Swal({
             text: 'دسته بندی اصلاح شد',

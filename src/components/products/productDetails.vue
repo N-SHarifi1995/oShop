@@ -18,10 +18,21 @@
         <div class="d-flex title"> <strong>دسته بندی :</strong>
           <p class="pl-4"> {{ category.categoryName }}</p>
         </div>
+        <div class="d-flex title align-center">
+          <strong>تعداد </strong>
+          <v-text-field class="pl-4" type="number" lable="تعداد" v-model="quantity" min="1">
 
-        <v-btn fab icon color="#ff1d58" @click="wishlist(product.id)">
-          <v-icon>mdi-heart</v-icon>
-        </v-btn>
+          </v-text-field>
+        </div>
+        <div>
+          <v-btn fab icon color="#ff1d58" @click="wishlist(product.id)">
+            <v-icon>mdi-heart</v-icon>
+          </v-btn>
+          <v-btn @click="addCart(product.id)">
+            افزودن به سبد خردید
+          </v-btn>
+        </div>
+
 
       </v-col>
     </v-row>
@@ -41,7 +52,8 @@ export default {
     product: '',
     id: '',
     category: "",
-    token: ''
+    token: '',
+    quantity: 1
 
   }),
   mounted() {
@@ -49,6 +61,8 @@ export default {
     this.product = this.products.find(pro => pro.id == this.id);
     this.category = this.categoris.find(cat => cat.id == this.product.categoryId);
     this.token = this.$store.state.token
+    // JSON.parse(window.localStorage.token);
+    console.log(this.token)
 
 
   },
@@ -56,23 +70,50 @@ export default {
 
   props: ['products', 'categoris'],
   methods: {
-   async wishlist(proid) {
+    async wishlist(proid) {
       console.log(this.token)
-      try { 
-        let reswishlist=await api().post(`/wishlist/add?token=${this.token}`,{id:proid})
-        if(reswishlist.status==200||reswishlist.status==201){
-         new Swal({
-          text:'به لیست موزد علاقهها افزوده شد'
-         })
+      try {
+        let reswishlist = await api().post(`/wishlist/add?token=${this.token}`, { id: proid })
+        if (reswishlist.status == 200 || reswishlist.status == 201) {
+          new Swal({
+            text: 'به لیست موزد علاقهها افزوده شد'
+          })
         }
       } catch (error) {
 
-         new Swal({
-          text:'خطایی رخ داده است'
-         })
+        new Swal({
+          text: 'خطایی رخ داده است'
+        })
       }
 
 
+    },
+    async addCart(productId) {
+      if (!this.token) {
+        new Swal({
+          text: 'لطفا به حساب خود وارد شوید'
+        })
+      }
+      else {
+        console.log(productId)
+        let res = await api().post(`/cart/add?token=${this.token}`, {
+          productId: productId,
+          quantity: this.quantity,
+        })
+        console.log(res)
+        if (res.status == 200 || res.status == 201) {
+
+          new Swal({
+            text: 'به سبد افزوده شد'
+          })
+        }
+
+        else {
+          new Swal({
+            text: 'خطایی رخ داده است'
+          })
+        }
+      }
     }
   }
 }

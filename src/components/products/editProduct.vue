@@ -57,7 +57,7 @@ export default {
       let result = await api().post(`/product/update/${this.id}`, this.product)
 
       if (result.status == 200 || result.status == 201) {
-        this.$emit('editCategory');
+        this.$emit('fetchData');
         this.$router.push({ name: "products" })
         new Swal({
           text: 'دسته بندی اصلاح شد',

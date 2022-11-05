@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import signUp from '../views/signUp'
 import signIn from '../views/signIn'
+import cartPage from '../views/cartPage'
 import AddCategoury from '../components/categoury/addCategoury'
 import editCategory from '../components/categoury/editCategory'
 import Categouries from '../components/categoury/categoryview'
@@ -64,6 +65,18 @@ const routes = [
     path: '/wishlist',
     name: 'wishList',
     component: wishList,
+
+  },
+  {
+    path: '/wishlist',
+    name: 'wishList',
+    component: wishList,
+
+  },
+  {
+    path: '/cart',
+    name: 'cartPage',
+    component: cartPage,
 
   },
   {

@@ -45,8 +45,9 @@
 
                 </v-list>
             </v-menu>
-            <v-btn icon>
-                <v-icon color="white">mdi-dots-vertical</v-icon>
+            <v-btn fab icon class="cart" :to="{name:'cartPage'}" >
+                <span class="icon">{{quantity}}</span>
+                <v-icon  color="white">mdi-cart</v-icon>
             </v-btn>
 
 
@@ -61,19 +62,21 @@ export default {
         return {
             token: null,
         }
-    }, mounted() {
+    },props:['quantity']
+    , mounted() {
         this.token = JSON.parse(window.localStorage.token)
     },methods: {
         signOut(){
         alert('okkkkkkkkkk')
         this.token=null;
+        this.$emit('resetCounter')
         localStorage.removeItem('token')
     }
     },
 
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .navbar {
     width: 100%;
 
@@ -84,6 +87,21 @@ export default {
 
     .toolbar {
         color: rgb(255, 249, 238);
+        .cart{
+           
+            .icon{
+               @include displayflex;
+                background-color: red;
+                color: white;font-size: 10px;
+                border-radius: 50%;
+                height: 0.7rem;
+                width: 0.7rem;
+                position: absolute;
+                top:-0.2rem;
+                left: 0.5rem;
+                z-index: 100;
+            }
+        }
     }
 }
 </style>

@@ -10,7 +10,7 @@ export default new Vuex.Store({
     categories: [],
     products: [],
     newUser: '',
-    token:''
+    token:JSON.parse(window.localStorage.token)
   },
  
   mutations: {
@@ -125,7 +125,7 @@ export default new Vuex.Store({
         if (res.status == 200 || res.status == 201) {
           let token=res.data.token;
           window.localStorage.token=JSON.stringify(token),
-         commit('sign_in',token)
+         commit('sign_in',JSON.stringify(token))
           //commit('sign_up', user)
           return res
 

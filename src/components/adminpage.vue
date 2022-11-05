@@ -2,11 +2,11 @@
   <v-container class="buttons">
 
 
-    <v-btn :to="{name:'Categoris'}" class="mt-3 button" fab width="150" height="150" >
+    <v-btn :to="{name:'adminCategoris'}" class="mt-3 button" fab width="150" height="150" >
      دسنه بندی ها
     </v-btn>
 
-    <v-btn :to="{name:'product'}" class="mt-3  button"  fab width="150" height="150"  >
+    <v-btn :to="{name:'adminproducts'}" class="mt-3  button"  fab width="150" height="150"  >
      محصولات
     </v-btn>
     <v-btn class="mt-3  button" fab width="150" height="150"  >
