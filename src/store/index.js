@@ -8,6 +8,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     categories: [],
+    CategouryIds:[],
     products: [],
     newUser: '',
     token:JSON.parse(window.localStorage.token)
@@ -15,7 +16,8 @@ export default new Vuex.Store({
  
   mutations: {
     get_category(state, cat) {
-      state.categories = cat
+      state.categories = cat[0]
+      state.CategouryIds=cat[1]
 
     },
     get_product(state, pro) {
@@ -43,13 +45,16 @@ export default new Vuex.Store({
         if (res.status == 200) {
 
           result = result.filter(j => typeof j.categoryName == 'string')
-          // let resultt = result.filter(i => i.categoryName.includes(''))
-          let categories = result
-          commit('get_category', categories)
+           let resultt = result.filter(i => i.categoryName.includes(' *'))
+           let ides=resultt.map(i=>i.id)
+           window.localStorage.categoryId=JSON.stringify(ides)
+           console.log(ides)
+          let categories = resultt
+          commit('get_category', [categories,ides])
 
         }
       } catch (error) {
-        alert('dd')
+        
         // new Swal({
         //   text: "There are some problems`",
         //   icon: 'error'
@@ -80,13 +85,12 @@ export default new Vuex.Store({
       try {
         let res = await api().get('/product/');
         let result = res.data;
-
         if (res.status == 200) {
+     let     resultt = result.filter(j => typeof j.name == 'string')
+          // let products = resultt.filter(i => i.name.includes('b'))
+           let products = resultt.filter(i => this.state.CategouryIds.includes(i.categoryId))
 
-          result = result.filter(j => typeof j.name == 'string')
-          let resultt = result.filter(i => i.name.includes('a'))
-          let products = resultt
-
+          console.log(products)
           commit('get_product', products)
 
         }

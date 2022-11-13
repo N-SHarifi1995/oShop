@@ -78,10 +78,10 @@ export default {
   //  }
   // .cart{ba}
 }
-
+ 
 .part {
   font-size: 30px;
   font-weight: 500;
-  color: $Brutal-Blue;
+  color: $Brutal-gold;
 }
 </style>

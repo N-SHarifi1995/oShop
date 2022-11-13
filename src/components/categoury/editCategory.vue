@@ -5,15 +5,15 @@
       <v-form class="item" v-if="category">
         <v-container>
   
-          <v-text-field outlined class="mt-30" clearable v-model="category.categoryName" label="name" required>
+          <v-text-field solo class="mt-30" clearable v-model="category.categoryName" label="name" required>
           </v-text-field>
   
-          <v-text-field outlined class="mt-30" clearable v-model="category.imageUrl" label="image Source" required>
+          <v-text-field solo class="mt-30" clearable v-model="category.imageUrl" label="image Source" required>
           </v-text-field>
   
   
-          <v-textarea class="mt-30" outlined clearable v-model="category.description" label="description" ></v-textarea>
-          <v-btn @click="editCat">
+          <v-textarea class="mt-30" solo clearable v-model="category.description" label="description" ></v-textarea>
+          <v-btn @click="editCat" color="#ffc800" class="btn">
             edit
           </v-btn>
   

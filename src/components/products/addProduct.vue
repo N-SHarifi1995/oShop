@@ -4,18 +4,18 @@
 
     <v-form class="item" app>
       <v-container>
-        <v-select v-model="categouryId" :items="categoris" label="categoris" item-text="categoryName" item-value="id"
-          outlined dense></v-select>
-        <v-text-field outlined class="mt-30" clearable v-model="name" label="name" required>
+        <v-select v-model="categouryId" :items="categoris" label="دسته بندی" item-text="categoryName" item-value="id"
+          solo dense></v-select>
+        <v-text-field solo class="mt-30" clearable v-model="name" label="نام محصول " required>
         </v-text-field>
 
-        <v-text-field outlined class="mt-30" clearable v-model="src" label="image Source" required>
+        <v-text-field solo class="mt-30" clearable v-model="src" label="تصویر" required>
         </v-text-field>
 
 
-        <v-textarea class="mt-30" outlined clearable v-model="description" label="description"></v-textarea>
-        <v-btn @click="AddPro">
-          ADD
+        <v-textarea class="mt-30" solo clearable v-model="description" label="توضیحات"></v-textarea>
+        <v-btn @click="AddPro" class="btn"  color="#ffc800">
+          افزودن
         </v-btn>
 
 
@@ -64,7 +64,7 @@ export default {
             icon: 'success'
 
           })
-          this.$router.push({name:'products'})
+          this.$router.push({name:'adminproducts'})
         }
 
       } catch (error) {

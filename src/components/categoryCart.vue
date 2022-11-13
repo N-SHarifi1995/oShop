@@ -2,25 +2,20 @@
   <v-container>
 
     <v-card class="mx-auto cart" max-width="400">
-      <!-- <v-img  height="250px" :src=getulr(this.category.imageUrl)>
-      </v-img> -->
-
-      <v-card-subtitle class="pb-0">
-        Number {{this.category.id}}
-      </v-card-subtitle>
-
+      <v-img class="img" height="300px" :src=getulr(this.category.imageUrl)>
+      </v-img>
       <v-card-text class="text--primary">
-        <div>{{this.category.categoryName}}</div>
+        <div class="name">{{this.category.categoryName}}</div>
 
-        <div>{{this.category.description}}</div>
+        <div class="description">{{this.category.description}}</div>
       </v-card-text>
 
       <v-card-actions>
-        <v-btn text :to="{ name: 'editCategory', params: { id: category.id } }" v-show="$route.name=='adminCategoris'">
-          edit
+        <v-btn text  class="edit btn" :to="{ name: 'editCategory', params: { id: category.id } }" v-show="$route.name=='adminCategoris'">
+         ویرایش
         </v-btn>
 
-        <v-btn color="orange" text :to="{ name: 'productsCategories', params: { id: category.id } }">
+        <v-btn class="pro btn" text :to="{ name: 'productsCategories', params: { id: category.id } }">
           محصولات
         </v-btn>
       </v-card-actions>
@@ -57,9 +52,22 @@ export default {
 }
 
 .cart {
+background-color:rgba(255, 255, 255, 0.627) ;
+  .pro{
+      color:$Yellow;
 
-  img {
+     } .edit{
+      color:$Brutal-Blue
+    } 
+    .img {
     @extend %fullsize;
+    object-fit: cover; 
+   
+  }.name{
+    font-size: 20px;
+    font-weight: bold;
+    padding: 1rem 0;
+
   }
 }
 </style>

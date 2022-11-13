@@ -5,16 +5,16 @@
     <v-form class="item">
       <v-container>
 
-        <v-text-field outlined class="mt-30" clearable v-model="name" label="name" required>
+        <v-text-field solo  class="mt-30 "  clearable v-model="name" label="دسته بندی" required>
         </v-text-field>
 
-        <v-text-field outlined class="mt-30" clearable v-model="src" label="image Source" required>
+        <v-text-field solo class=" texterea" clearable v-model="src" label="تصویر" required>
         </v-text-field>
 
 
-        <v-textarea class="mt-30" outlined clearable v-model="description" label="description" ></v-textarea>
-        <v-btn @click="AddCat">
-          ADD
+        <v-textarea class="mt-30" solo clearable v-model="description" label="توضیحات"></v-textarea>
+        <v-btn @click="AddCat" class="btn"  color="#ffc800">
+         افزودن 
         </v-btn>
 
 
@@ -59,14 +59,14 @@ export default {
       let result = await this.$store.dispatch('AddCategory', newCategory);
 
       if (result.data) {
-        Swal({
+        new Swal({
           text: 'دسته بندی اضافه شد',
           icon: 'success'
 
         })
       }
       else {
-        Swal({
+        new Swal({
           text: 'دسته بندی اضافه نشد',
           icon: 'error'
 
@@ -85,6 +85,10 @@ export default {
 
   .item {
     width: 40vw;
+    .texterea{
+     color: blueviolet;
+     border-radius: 2rem rgb(169, 13, 13) solid;
+    }
   }
 }
 </style>

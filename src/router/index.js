@@ -23,7 +23,7 @@ const routes = [
     name: 'home',
     component: HomeView
   },
-  {
+  { 
     path: '/signUp',
     name: 'signUp',
     component: signUp

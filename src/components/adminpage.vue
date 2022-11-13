@@ -46,7 +46,7 @@ export default {
    justify-content: space-evenly;
    
    .button{
-   background-color: $secondary-color;
+   background-color: $Brutal-gold;
    color: white;
    font-weight:bolder;
  

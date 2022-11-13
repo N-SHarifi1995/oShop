@@ -3,15 +3,24 @@ $secondary-color: #04052c;
 $Yass-Queen: #ff1d58;
 $Sister-Sister: #f75990;
 $Crown-Yellow: #fff685;
+$Yellow: #9a5f1f;
+$Blue: #ece2d6;
+
 $Blue-Light: #00DDFF;
 $Brutal-Blue: #0049B7;
+$Brutal-gold: #ffc800;
 $font-mj: 'mj';
-
+ 
 #app {
-  background-color: #fff685;
+  background-color: rgba(0, 0, 0, 0.819);
 
 }
 
+.header {
+  margin-top: 5rem;
+   font-size: 2rem;
+   color: $Brutal-gold;
+ }
 * {
   font-family: $font-mj;
 }
@@ -29,7 +38,8 @@ $font-mj: 'mj';
 
 }
 .btn{
-  background-color:$Yass-Queen ;
+  // background-color:$Yass-Queen ;
+  font-weight: 700;
 }
 .link{text-decoration: none;font-size: 12px;}
 

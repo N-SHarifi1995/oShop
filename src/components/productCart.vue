@@ -2,7 +2,7 @@
   <v-container>
 
     <v-card class="mx-auto cart"  max-width="400">
-      <v-img  height="250px" src='../assets/img/airpod.jpg'>
+      <v-img  class="img"  :src=getulr(this.product.imageURL)>
       </v-img>
 
       <v-card-subtitle class="pb-0">
@@ -16,11 +16,11 @@
       </v-card-text>
 
       <v-card-actions>
-        <v-btn color="orange" text :to="{ name: 'productDetails', params: { id: product.id } }">
+        <v-btn  class="btn pro" text :to="{ name: 'productDetails', params: { id: product.id } }">
           نمایش
         </v-btn>
 
-        <v-btn color="orange" text v-show="$route.name=='adminproducts'" :to="{ name: 'editProduct', params: { id: product.id } }">
+        <v-btn class="btn edit" text v-show="$route.name=='adminproducts'" :to="{ name: 'editProduct', params: { id: product.id } }">
           ویرایش
         </v-btn>
       </v-card-actions>
@@ -54,9 +54,19 @@ export default {
 .form {
   @include displayflex;
 
-}.cart{
-  
-  img{@extend %fullsize;}
+}.cart{background-color:rgba(255, 255, 255, 0.627) ;
+  .pro{
+    
+      color:$Yellow;
+
+    } .edit{
+      color:$Brutal-Blue
+    } 
+  .img {
+   
+   
+   
+  }
 }
 </style>
   
