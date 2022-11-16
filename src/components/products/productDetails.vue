@@ -1,40 +1,47 @@
 <template>
-  <v-container color="white " class="pt-16">
+  <v-container color="white " class="pt-16 ">
 
-    <v-row no-gutters class="mt-15">
-      <v-col cols="4">
-        <v-img :src="product.imageURL"></v-img>
+    <v-row no-gutters class="mt-15 d-flex  flex-row-reverse">
+  <v-col class="col-sm-4 col-md-4 col-xs-12">
+        <v-img class="img" :src=getulr(product.imageURL)></v-img>
       </v-col>
-      <v-col cols="8" class="d-flex align-start flex-column px-5 py-5 justify-space-around">
-        <div class="d-flex title"> <strong> نام محصول:</strong>
-          <p class="pl-4"> {{ product.name }}</p>
+      <v-col  class="d-flex col-sm-8 col-md-8 col-xs-12  flex-column px-5 py-5 justify-space-around align-end">
+        <div class="d-flex title ">
+          <p class="pl-4 " > {{ product.name }} </p>
+          <p class="lable">&nbsp;&nbsp;&nbsp;: نام محصول</p>
         </div>
-        <div class="d-flex title"><strong> توضیحات:</strong>
-          <p class="pl-4"> {{ product.description }}</p>
+        <div class="d-flex flex-column title text-justify">
+          <p class="text-right lable"> &nbsp;&nbsp;&nbsp;: توضیحات</p>
+          <p class="pl-4    text-right text-justify-right"> {{ product.description }} </p>
+
         </div>
-        <div class="d-flex title"><strong>قیمت: </strong>
-          <p class="pl-4"> {{ product.price }}</p>
+        <div class="d-flex title">
+          <p class="pl-4 " > {{ product.price }} </p>
+          <p class="lable"> &nbsp;&nbsp;&nbsp;: قیمت </p>
         </div>
-        <div class="d-flex title"> <strong>دسته بندی :</strong>
-          <p class="pl-4"> {{ category.categoryName }}</p>
+        <div class="d-flex title">
+          <p class="pl-4 " > {{ category.categoryName }} </p>
+          <p class="lable">&nbsp;&nbsp;&nbsp; : دسته بندی </p>
         </div>
-        <div class="d-flex title align-center">
-          <strong>تعداد </strong>
-          <v-text-field class="pl-4" type="number" lable="تعداد" v-model="quantity" min="1">
+        <div class="d-flex title align-center justify-center">
+
+          <v-text-field solo class="pl-4" type="number" lable="تعداد" v-model="quantity" min="1">
 
           </v-text-field>
+          <p class="lable"> &nbsp;&nbsp;&nbsp; : تعداد </p>
         </div>
         <div>
           <v-btn fab icon color="#ff1d58" @click="wishlist(product.id)">
             <v-icon>mdi-heart</v-icon>
           </v-btn>
-          <v-btn @click="addCart(product.id)">
+          <v-btn class="btn ml-16" color="#ffc800" @click="addCart(product.id)">
             افزودن به سبد خردید
           </v-btn>
         </div>
 
 
       </v-col>
+    
     </v-row>
 
   </v-container>
@@ -114,13 +121,32 @@ export default {
           })
         }
       }
+    },
+    getulr(pathe) {
+      console.log(pathe)
+      return require(`@/assets/img/${pathe}`)
     }
   }
 }
 </script>
 <style scoped lang="scss">
 .favorite {
-  color: $Yass-Queen
+  color: $Yass-Queen;
+ 
+}
+
+.title {
+  color: aliceblue;
+}
+.lable{
+  color:$Crown-Yellow;
+  font-size: 1rem;
+}
+.img {
+  max-height: 30rem;
+  max-width: 25rem;
+  padding: 0 2rem;
+  object-fit: cover;
 }
 </style>
   

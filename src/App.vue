@@ -1,37 +1,41 @@
 <template>
 
   <v-app id="app">
-    <navbar :quantity="count " @resetCounter="resetCounter"></navbar>
-    <router-view class="view " :categoris="categories" :products='products' @fetchData="fetchData()"></router-view>
+    <navbar :quantity="count" @resetCounter="resetCounter"></navbar>
+    <router-view class="view " v-if="products && categories" :categoris="categories" :products='products'
+      @fetchData="fetchData()"></router-view>
     <footerPage></footerPage>
   </v-app>
 </template>
 <script>
-import { mapState, mapActions } from 'vuex'
+//import { mapActions } from 'vuex'
 import api from './services/API'
 import navbar from './components/material/navbar.vue'
 import footerPage from './components/material/footer.vue'
 export default {
 
-  
+
   data() {
     return {
       token: '',
-      count:''
+      count: '',
+      categories: '', products: ''
+
     }
   },
   components: { navbar, footerPage },
   methods: {
 
-    ...mapActions(["GetCategoury", "GetProduct"]),
-   async fetchData() {
-      this.GetCategoury();
-      this.GetProduct();
+    //...mapActions(["GetProduct"]),
+    async fetchData() {
+    await this.$store.dispatch('GetCategoury')
+      this.categories = this.$store.state.categories
+      await this.$store.dispatch('GetProduct');
+      this.products = this.$store.state.products
       if (this.token) {
-        let res =await api().get(`/cart/?token=${this.token}`)
+        let res = await api().get(`/cart/?token=${this.token}`)
         if (res.status == 200 || res.status == 201) {
-        
-          
+
           this.count = Object.keys(res.data.cartItems).length;
         }
         else {
@@ -41,18 +45,19 @@ export default {
 
 
     },
-    resetCounter(){
-      this.count=0
+    resetCounter() {
+      this.count = 0
     }
 
 
   },
   computed: {
-    ...mapState(['categories', 'products']),
+    // ...mapState(['categories', 'products']),
   },
   mounted() {
-    this.token =this.$store.state.token
-    this.fetchData()
+    this.token = this.$store.state.token;
+    this.fetchData();
+
 
 
 

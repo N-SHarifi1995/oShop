@@ -1,24 +1,24 @@
 <template>
- 
+
   <v-container class="form" height="100vh">
- <h1>ویرایش محصول</h1>
+    <h1 class="header py-8">ویرایش محصول</h1>
 
     <v-form class="item" v-if="product">
       <v-container>
-         <v-select v-model="product.categoryId" :items="categoris" label="categoris" item-text="categoryName" item-value="id"
-          outlined dense></v-select> 
-        <v-text-field outlined class="mt-30" clearable v-model="product.name" label="name" required>
+        <v-select v-model="product.categoryId" :items="categoris" label="categoris" item-text="categoryName"
+          item-value="id" solo dense></v-select>
+        <v-text-field solo class="mt-30" clearable v-model="product.name" label="name" required>
         </v-text-field>
 
-        <v-text-field outlined class="mt-30" clearable v-model="product.imageURL" label="image Source" required>
+        <v-text-field solo class="mt-30" clearable v-model="product.imageURL" label="image Source" required>
         </v-text-field>
-        <v-text-field outlined class="mt-30" clearable v-model="product.price" label="price" required>
+        <v-text-field solo class="mt-30" clearable v-model="product.price" label="price" required>
         </v-text-field>
 
 
-        <v-textarea class="mt-30" outlined clearable v-model="product.description" label="description"></v-textarea>
-        <v-btn @click="editPro">
-          edit
+        <v-textarea class="mt-30" solo clearable v-model="product.description" label="description"></v-textarea>
+        <v-btn class="btn"  color="#ffc800" @click="editPro">
+         ویرایش
         </v-btn>
 
 
@@ -86,6 +86,7 @@ export default {
 <style scoped lang="scss">
 .form {
   @include displayflex;
+  flex-direction: column;
   height: 100vh;
 
   .item {

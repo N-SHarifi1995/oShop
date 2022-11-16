@@ -2,7 +2,7 @@
     <v-card flat tile class="navbar" color="rgba(0,0,0,0)">
         <v-toolbar class="toolbar" color="rgba(0,0,0,0)">
 
-            <v-toolbar-title>Shop</v-toolbar-title>
+            <v-toolbar-title color="#ffc800">Shop</v-toolbar-title>
 
             <v-spacer></v-spacer>
 
@@ -14,7 +14,7 @@
             <v-menu offset-y>
                 <template v-slot:activator="{ on, attrs }">
                     <v-btn fab icon class="d-none d-sm-flex" v-bind="attrs" v-on="on">
-                        <v-icon color="white">mdi-account-circle-outline</v-icon>
+                        <v-icon color="#ffc800">mdi-account-circle-outline</v-icon>
                     </v-btn>
 
                 </template>
@@ -51,12 +51,12 @@
             </v-menu>
             <v-btn fab icon class="cart d-none d-sm-flex " :to="{ name: 'cartPage' }">
                 <span class="icon">{{ quantity }}</span>
-                <v-icon color="white">mdi-cart</v-icon>
+                <v-icon color="#ffc800">mdi-cart</v-icon>
             </v-btn>
 
 
 
-            <v-app-bar-nav-icon class="d-flex d-sm-none" color="white" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+            <v-app-bar-nav-icon class="d-flex d-sm-none" color="#ffc800" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
 
             <v-navigation-drawer v-model="drawer" absolute height="auto" right class="mt-15">

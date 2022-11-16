@@ -1,20 +1,35 @@
 <template>
   <div class="items">
-    <v-card class="card mt-2" v-for="item in products" :key="item.id">
+    <v-card class="card mt-2 " v-for="item in products" :key="item.id">
       <v-row no-gutters>
-        <v-col cols="3">
-          <v-img :src="item.product.imageURL" class="img"></v-img>
+        <v-col  class="col-sm-4 col-md-3 col-xs-12">
+          <v-img :src=getulr(item.product.imageURL) class="img"></v-img>
         </v-col>
-        <v-col cols="9" class="d-flex flex-column align-end">
-          <h3>
-            {{ item.product.name }}
-          </h3>
-          <p> {{ item.product.description }} :<strong>توضیحات </strong></p>
-          <p><strong>قیمت : </strong>{{ item.product.price }}</p>
-          <p><strong>تعداد : </strong>{{ item.quantity }}</p>
+        <v-col  class=" col-sm-8 col-md-9 col-xs-12 d-flex flex-column align-end">
+          <div class="d-flex title ">
+            <p class="pl-4 name
+            "> {{ item.product.name }} </p>
+
+          </div>
+          <div class="d-flex flex-column title text-justify">
+            <p class="text-right lable"> &nbsp;&nbsp;&nbsp;: توضیحات</p>
+            <p class="pl-4 desc    text-right text-justify-right"> {{ item.product.description }} </p>
+
+          </div>
+          <div class="d-flex  title text-justify">
+            <p class="pl-4 desc    text-right text-justify-right"> {{ item.quantity }} </p>
+            <p class="text-right lable"> &nbsp;&nbsp;&nbsp;: تعداد</p>
+
+
+          </div>
+          <div class="d-flex title">
+            <p class="pl-4 desc "> {{ item.product.price }} </p>
+            <p class="lable"> &nbsp;&nbsp;&nbsp;: قیمت </p>
+          </div>
+
           <div>
             <v-btn icon @click="deletitem(item.id)">
-              <v-icon>mdi-delete</v-icon>
+              <v-icon color="#9a5f1f">mdi-delete</v-icon>
             </v-btn>
             <v-btn icon>
               <v-icon>mdi-edit</v-icon>
@@ -26,8 +41,13 @@
     </v-card>
     <v-row no-gutters>
       <v-col clos="12">
-        <p><strong>جمع کل: </strong>{{ totalCost }}</p>
-        <v-btn>ثبت نهایی</v-btn>
+       
+        <div class="d-flex justify-center align-center total" > 
+           <p  class=""> &nbsp;&nbsp;&nbsp; جمع کل:</p>
+         
+            <p class="pl-4 desc "> {{ totalCost }} </p>
+           </div>
+        <v-btn class="btn mb-8" color="#ffc800">ثبت نهایی</v-btn>
       </v-col>
 
     </v-row>
@@ -47,7 +67,7 @@ export default {
   methods: {
     async getOrder() {
       let res = await api().get(`/cart/?token=${this.token}`)
-     
+
       if (res.status == 200 || res.status == 201) {
 
         this.products = res.data.cartItems
@@ -67,10 +87,14 @@ export default {
         alert('error')
       }
       this.$router.go(0)
+    },
+    getulr(pathe) {
+      console.log(pathe)
+      return require(`@/assets/img/${pathe}`)
     }
 
   }, mounted() {
-    this.token = JSON.parse(localStorage.getItem('token')) ;
+    this.token = JSON.parse(localStorage.getItem('token'));
     //console.log(this.token)
     this.getOrder()
   },
@@ -82,13 +106,31 @@ export default {
   padding: 0 2rem;
 
   .card {
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.627);
     padding: 1rem 3.5rem;
 
     .img {
-      max-width: 9rem;
-      max-height: 9rem;
+      max-width: 15rem;
+      max-height:18rem;
+    }
+
+    
+    .desc{font-size: 1rem;}
+ .lable {
+      font-size: 1rem;
+      font-weight: 700;
+      color: $Yellow;
+
+    }
+    .name {
+      font-size: 1.2rem;
+      font-weight: 700;
     }
   }
+  .total{
+   color:#ffc800;
+  font-size: larger;
+  }
+ 
 }
 </style>

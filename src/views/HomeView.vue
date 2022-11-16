@@ -12,7 +12,7 @@
 
       <p class=" text-right pt-9   part">دسته بندی ها</p>
       <v-row no-gutters>
-        <v-col cols='4' class="col-sm-3 col-xs-2" v-for="inx in  categorySize" :key="inx">
+        <v-col  class="col-md-3 col-sm-6 col-xs-6" v-for="inx in  categorySize" :key="inx">
           <categoryCart :category="categoris[inx - 1]"></categoryCart>
 
 
@@ -23,7 +23,7 @@
     <v-card class=" px-5" color="transparent">
       <p class="text-right pt-9  part">محصولات</p>
       <v-row no-gutters>
-        <v-col cols='4' class="col-sm-3 col-xs-2" v-for="inx in  productSize" :key="inx">
+        <v-col cols='4' class="col-md-3 col-sm-6 col-xs-6" v-for="inx in  productSize" :key="inx">
           <productCart :product="products[inx - 1]"></productCart>
         </v-col>
       </v-row>
@@ -49,7 +49,7 @@ export default {
   data() {
     return {
       categorySize: null,
-      productSize: null,
+      productSize: null, 
     } 
   },
   mounted() { 
@@ -78,8 +78,7 @@ export default {
   //  }
   // .cart{ba}
 }
- 
-.part {
+ .part {
   font-size: 30px;
   font-weight: 500;
   color: $Brutal-gold;

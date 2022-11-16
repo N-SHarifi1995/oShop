@@ -8,16 +8,16 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     categories: [],
-    CategouryIds:[],
+    CategouryIds: [],
     products: [],
     newUser: '',
-    token:JSON.parse(window.localStorage.token)
+    token: JSON.parse(window.localStorage.token)
   },
- 
+
   mutations: {
     get_category(state, cat) {
       state.categories = cat[0]
-      state.CategouryIds=cat[1]
+      state.CategouryIds = cat[1]
 
     },
     get_product(state, pro) {
@@ -27,8 +27,8 @@ export default new Vuex.Store({
     sign_up(state, user) {
       state.newUser = user
     },
-    sign_in(state,tkn) {
-      state.token= tkn
+    sign_in(state, tkn) {
+      state.token = tkn
     }
   },
 
@@ -37,30 +37,29 @@ export default new Vuex.Store({
 
   actions: {
     async GetCategoury({ commit }) {
-
-      try {
-        let res = await api().get('/category/');
+      await api().get('/category/').then(res => {
         let result = res.data;
-
         if (res.status == 200) {
-
           result = result.filter(j => typeof j.categoryName == 'string')
-           let resultt = result.filter(i => i.categoryName.includes(' *'))
-           let ides=resultt.map(i=>i.id)
-           window.localStorage.categoryId=JSON.stringify(ides)
-           console.log(ides)
-          let categories = resultt
-          commit('get_category', [categories,ides])
+          let categories = result.filter(i => i.categoryName.includes(' *'))
+          let ides = categories.map(i => i.id)
+          window.localStorage.categoryId = JSON.stringify(ides)
+
+          commit('get_category', [categories, ides])
+     
+          console.log(categories)
+          return categories
 
         }
-      } catch (error) {
-        
-        // new Swal({
-        //   text: "There are some problems`",
-        //   icon: 'error'
 
-        // })
       }
+
+      ).catch(error=>console.log(error))
+
+
+
+
+
     },
     async AddCategory({ commit }, newCategory) {
 
@@ -81,27 +80,20 @@ export default new Vuex.Store({
 
     },
     async GetProduct({ commit }) {
-
-      try {
-        let res = await api().get('/product/');
+      await api().get('/product/').then(res => {
         let result = res.data;
         if (res.status == 200) {
-     let     resultt = result.filter(j => typeof j.name == 'string')
+          let resultt = result.filter(j => typeof j.name == 'string')
           // let products = resultt.filter(i => i.name.includes('b'))
            let products = resultt.filter(i => this.state.CategouryIds.includes(i.categoryId))
 
-          console.log(products)
+          // console.log(products)
           commit('get_product', products)
 
         }
-      } catch (error) {
-        alert('dd')
-        // new Swal({
-        //   text: "There are some problems`",
-        //   icon: 'error'
+      }).catch(error=>console.log(error))
 
-        // })
-      }
+
     },
     async SignUp({ commit }, user) {
 
@@ -117,19 +109,19 @@ export default new Vuex.Store({
         }
       } catch (error) {
         alert('dd')
-        
+
       }
     },
     async SignIn({ commit }, user) {
- 
+
       try {
         let res = await api().post('/user/signIn', user);
 
         console.log(res)
         if (res.status == 200 || res.status == 201) {
-          let token=res.data.token;
-          window.localStorage.token=JSON.stringify(token),
-         commit('sign_in',JSON.stringify(token))
+          let token = res.data.token;
+          window.localStorage.token = JSON.stringify(token),
+            commit('sign_in', JSON.stringify(token))
           //commit('sign_up', user)
           return res
 

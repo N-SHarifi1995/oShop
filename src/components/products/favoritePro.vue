@@ -1,8 +1,8 @@
 <template>
   <v-container color="white">
-    <h3 class="header">محصولات</h3>
+    <h3 class="header">لیست مورد علاقه ها</h3>
     <v-row no-gutters>
-      <v-col cols="4" v-for="pro in products" :key="pro.id">
+      <v-col class="col-md-4 col-sm-6 col-xs-6 " v-for="pro in products" :key="pro.id">
         <Product-cart :product="pro"></Product-cart>
       </v-col>
     </v-row>
@@ -51,10 +51,6 @@ export default {
 
 }
 
-.header {
-  padding: 2rem;
-  font-size: 2rem;
-  color: $secondary-color;
-}
+
 </style>
   

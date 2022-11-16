@@ -6,7 +6,7 @@
 
     </div>
     <v-row no-gutters>
-      <v-col cols="4" v-for="pro in products" :key="pro.id">
+      <v-col class="col-md-4 col-sm-6 col-xs-6 " v-for="pro in products" :key="pro.id">
         <Product-cart :product="pro"></Product-cart>
       </v-col>
     </v-row>
