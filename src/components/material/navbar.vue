@@ -6,10 +6,10 @@
 
             <v-spacer></v-spacer>
 
-            <!-- <v-btn icon >
-                <v-icon color="white">mdi-magnify</v-icon>
-            </v-btn> -->
-
+            <v-btn fab icon class=" d-none d-sm-flex " :to="{ name: 'home' }">
+            
+                <v-icon color="#ffc800">mdi-home</v-icon>
+            </v-btn>
 
             <v-menu offset-y>
                 <template v-slot:activator="{ on, attrs }">

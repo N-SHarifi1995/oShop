@@ -47,7 +47,7 @@ export default new Vuex.Store({
 
           commit('get_category', [categories, ides])
      
-          console.log(categories)
+         // console.log(categories)
           return categories
 
         }

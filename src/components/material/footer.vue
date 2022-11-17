@@ -1,5 +1,5 @@
 <template>
-    <v-card flat tile class="footer py-8" color="#04052c">
+    <v-card  class="footer py-8" color="#04052c">
         <v-row no-gutters>
             <v-col cols='3' class="col-sm-3 col-xs-6 " v-for="list in Lists" :key="list.title">
                 <v-list class="list" color="transparent">
@@ -32,7 +32,7 @@ export default {
 </script>
 <style lang="scss">
 .footer {
-    background-color: $secondary-color;
+    background-color: $footer;
 
     .list {
         @include displayflex;

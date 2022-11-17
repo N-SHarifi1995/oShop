@@ -5,7 +5,7 @@
 
 
     <div class="d-flex justify-end py-6 ">
-      <v-btn class="btn" color="#eb942a" :to="{ name: 'AddCategoury' }">افزودن دسته بندی</v-btn>
+      <v-btn class="btn" color="#eb942a" v-show="$route.name=='adminCategoris'" :to="{ name: 'AddCategoury' }">افزودن دسته بندی</v-btn>
 
     </div>
 

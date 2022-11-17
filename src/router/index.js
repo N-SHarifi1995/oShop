@@ -50,6 +50,11 @@ const routes = [
     name: 'adminCategoris',
     component: Categouries,
 
+  },{
+    path: '/Categouries',
+    name: 'Categoris',
+    component: Categouries,
+
   }, {
     path: '/admin',
     name: 'Admin',
@@ -88,6 +93,11 @@ const routes = [
   }, {
     path: '/admin/products',
     name: 'adminproducts',
+    component: Products,
+
+  }, {
+    path: '/products',
+    name: 'products',
     component: Products,
 
   },

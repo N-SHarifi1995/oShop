@@ -2,7 +2,7 @@
   <v-container color="white">
     <h3 class="header">محصولات</h3>
     <div class="d-flex justify-end py-6 ">
-      <v-btn class="btn" color="#eb942a" :to="{ name: 'addProducts' }">افزودن محصول</v-btn>
+      <v-btn class="btn" color="#eb942a" v-show="$route.name=='adminproducts'" :to="{ name: 'addProducts' }">افزودن محصول</v-btn>
 
     </div>
     <v-row no-gutters>

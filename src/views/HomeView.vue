@@ -8,20 +8,24 @@
       </v-col>
     </v-row>
     <!-- category part -->
-    <v-card class="categoris px-5 " color="transparent">
+    <v-card class=" px-5 " color="transparent">
+      <router-link class=" part" :to="{ name: 'Categoris' }">
+        <p class=" text-right pt-9   part">دسته بندی ها</p>
+      </router-link>
 
-      <p class=" text-right pt-9   part">دسته بندی ها</p>
+
       <v-row no-gutters>
-        <v-col  class="col-md-3 col-sm-6 col-xs-6" v-for="inx in  categorySize" :key="inx">
+        <v-col class="col-md-3 col-sm-6 col-xs-6" v-for="inx in  categorySize" :key="inx">
           <categoryCart :category="categoris[inx - 1]"></categoryCart>
-
-
         </v-col>
       </v-row>
     </v-card>
     <!-- product part -->
     <v-card class=" px-5" color="transparent">
-      <p class="text-right pt-9  part">محصولات</p>
+
+      <router-link class=" part" :to="{ name: 'products' }">
+        <p class="text-right pt-9  part">محصولات</p>
+      </router-link>
       <v-row no-gutters>
         <v-col cols='4' class="col-md-3 col-sm-6 col-xs-6" v-for="inx in  productSize" :key="inx">
           <productCart :product="products[inx - 1]"></productCart>
@@ -49,10 +53,10 @@ export default {
   data() {
     return {
       categorySize: null,
-      productSize: null, 
-    } 
+      productSize: null,
+    }
   },
-  mounted() { 
+  mounted() {
 
     this.categorySize = Math.min(6, this.categoris.length);
     this.productSize = Math.min(8, this.products.length);
@@ -74,13 +78,14 @@ export default {
     height: 100%;
   }
 
-  // .categoris{ 
-  //  }
-  // .cart{ba}
+
 }
- .part {
+
+.part {
   font-size: 30px;
   font-weight: 500;
   color: $Brutal-gold;
+  text-decoration: none;
+  text-align: right;
 }
 </style>
